@@ -1,0 +1,23 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Git-Checkout') { 
+            steps {
+                echo "Checkingout Successfully";
+                git branch: 'main', url: 'https://github.com/kshraddha1413/Pipeline_Script.git'
+            }
+        }
+        stage('Build') { 
+            steps {
+                 echo "Build passed Successfully";  
+                 bat 'Build.bat'
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                echo "Deployed Successfully";
+                bat 'Deploy.bat'
+            }
+        }
+    }
+}
